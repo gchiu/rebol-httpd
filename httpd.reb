@@ -143,6 +143,7 @@ sys/make-scheme [
             instance: 0
             request: _
             response: _
+            cookie: _               ;; try this
             parent: :server
         ]
 
@@ -457,6 +458,9 @@ sys/make-scheme [
                 ]
                 keep [cr lf "Cache-Control:" "no-cache"]
                 keep [cr lf "Access-Control-Allow-Origin: *"]
+                if not empty? response/cookie [
+                    keep [cr lf "Set-Cookie:" response/cookie ]
+                ]
                 keep [cr lf cr lf]
             ]
         ])
