@@ -143,7 +143,7 @@ sys/make-scheme [
             instance: 0
             request: _
             response: _
-            cookie: _               ;; try this
+            cookie: _ ;; "A=C"               ;; try this
             parent: :server
         ]
 
@@ -281,6 +281,7 @@ sys/make-scheme [
         kill?: false
         close?: true
         compress?: false
+        set-cookie: _ ; "C=D"
 
         render: method [response [text! binary!]] [
             status: 200
@@ -424,7 +425,7 @@ sys/make-scheme [
             403 "Forbidden"
             404 "Not Found"
             411 "Length Required"
-
+            
             500 "Internal Server Error"
             503 "Service Unavailable"
         ])
@@ -456,11 +457,10 @@ sys/make-scheme [
                 if response/close? [
                     keep [cr lf "Connection:" "close"]
                 ]
-                keep [cr lf "Cache-Control:" "no-cache"]
-                keep [cr lf "Access-Control-Allow-Origin: *"]
-                if not empty? response/cookie [
-                    keep [cr lf "Set-Cookie:" response/cookie ]
+                if not empty? response/set-cookie [
+                    keep [cr lf "Set-Cookie:" response/set-cookie ]
                 ]
+                ; keep [cr lf "Cache-Control:" "no-cache"]
                 keep [cr lf cr lf]
             ]
         ])
