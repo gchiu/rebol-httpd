@@ -460,7 +460,8 @@ sys/make-scheme [
                 if not empty? response/set-cookie [
                     keep [cr lf "Set-Cookie:" response/set-cookie ]
                 ]
-                ; keep [cr lf "Cache-Control:" "no-cache"]
+                keep [cr lf "Access-Control-Allow-Origin: *"]
+                keep [cr lf "Cache-Control:" "no-cache"]
                 keep [cr lf cr lf]
             ]
         ])
