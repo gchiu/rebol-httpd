@@ -395,6 +395,7 @@ sys/make-scheme [
 
             type: try all [
                 text? type: headers/Content-Type
+                find type ";"
                 copy/part type (opt find type ";")
             ]
 
