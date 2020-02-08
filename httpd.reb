@@ -395,8 +395,8 @@ sys/make-scheme [
 
             type: all [
                 text? type: headers/Content-Type
-                append type ";"
-                copy/part type find type ";"
+                ; append type ";"
+                copy/part type find type ";"  ; if find is null, that voids the /part so it's just `copy type`
             ] else ["text/html"]
 
             length: content-length: attempt [to integer! length] else [0]
