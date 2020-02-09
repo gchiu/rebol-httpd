@@ -399,6 +399,8 @@ sys/make-scheme [
                 copy/part type find type ";"  ; if find is null, that voids the /part so it's just `copy type`
             ] else ["text/html"]
 
+-- type
+
             length: content-length: attempt [to integer! length] else [0]
 
             net-utils/net-log action
