@@ -78,7 +78,10 @@ sys/make-scheme [
                         dispatch client
                     ]
 
-                    default [if not empty? client/data [read client]]
+                    default [if not empty? client/data [
+                        lib/write/append %logs/log.txt spaced [now/precise '| "inside event loop" '| to text! client/data newline ]
+                        read client
+                    ]]
                 ]
             ]
 
