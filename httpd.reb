@@ -60,8 +60,6 @@ sys/make-scheme [
         event [event!]
     ][
         client: event/port
-        
-        probe client
 
         switch event/type [
             'read [
