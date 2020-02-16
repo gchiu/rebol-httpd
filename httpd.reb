@@ -79,7 +79,7 @@ sys/make-scheme [
                     ]
 
                     default [if not empty? client/data [
-                        lib/write/append %logs/log.txt spaced [now/precise '| "inside event loop" '| client/locals/request/remote-addr/remote-ip '| to text! client/data newline ]
+                        lib/write/append %logs/log.txt spaced [now/precise '| "inside event loop" '| client/locals/request/remote-addr/remote-ip '| as-text client/data newline ]
                         read client
                     ]]
                 ]
