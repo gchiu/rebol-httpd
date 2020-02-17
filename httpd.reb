@@ -4,12 +4,13 @@ Rebol [
     Date: 13-Sep-2019
     File: %httpd.reb
     Home: https://github.com/rgchris/Scripts
-    Version: 0.3.5
+    Version: 0.3.6
     Purpose: "An elementary Web Server scheme for creating fast prototypes"
     Rights: http://opensource.org/licenses/Apache-2.0
     Type: module
     Name: httpd
     History: [
+        17-Feb-2020 0.3.6 "Trap reads on the client port"
         02-Feb-2019 0.3.5 "File argument for REDIRECT permits relative redirections"
         14-Dec-2018 0.3.4 "Add REFLECT handler (supports OPEN?); Redirect defaults to 303"
         16-Mar-2018 0.3.3 "Add COMPRESS? option"
@@ -81,8 +82,8 @@ sys/make-scheme [
                     ]
 
                     default [if not empty? client/data [
-                        lib/write/append %logs/log.txt spaced [now/precise '| "inside event loop" '| client/locals/request/remote-addr/remote-ip '| if trap [to text! client/data][client/data] else [to text! client/data]  newline ]
-                        read client
+                        lib/write/append %logs/log.txt spaced [now/precise '| "inside event loop" '| if trap [to text! client/data][client/data] else [to text! client/data]  newline ]
+                        if trap [read client][close client]
                     ]]
                 ]
             ]
