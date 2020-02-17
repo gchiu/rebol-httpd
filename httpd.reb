@@ -60,6 +60,8 @@ sys/make-scheme [
         event [event!]
     ][
         client: event/port
+        
+        -- event/type
 
         switch event/type [
             'read [
