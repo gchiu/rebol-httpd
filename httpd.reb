@@ -403,7 +403,7 @@ sys/make-scheme [
                 text? type: headers/Content-Type
                 ; append type ";"
                 copy/part type find type ";"  ; if find is null, that voids the /part so it's just `copy type`
-            ] else ["text/html"]
+            ] else ["text/html; charset=utf-8"]
 
 -- type
 
