@@ -481,7 +481,7 @@ sys/make-scheme [
             client/locals/parent/locals/handler client/locals/request response
         ] else [  ; don't crash on bad request
             response/status: 500
-            response/type: "text/html"
+            response/type: "text/html; charset=utf-8"
             response/content: "Bad request."
         ]
 
