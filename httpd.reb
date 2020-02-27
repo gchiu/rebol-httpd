@@ -282,7 +282,7 @@ sys/make-scheme [
         status: 404
         content: "Not Found"
         location: _
-        type: "text/html"
+        type: "text/html; charset=utf-8"
         length: 0
         kill?: false
         close?: true
