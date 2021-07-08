@@ -10,6 +10,7 @@ Rebol [
     Type: module
     Name: httpd
     History: [
+        22-Feb-2020 0.3.7 "add debug in the spec"
         17-Feb-2020 0.3.6 "Trap reads on the client port"
         02-Feb-2019 0.3.5 "File argument for REDIRECT permits relative redirections"
         14-Dec-2018 0.3.4 "Add REFLECT handler (supports OPEN?); Redirect defaults to 303"
@@ -54,7 +55,7 @@ sys/make-scheme [
     title: "HTTP Server"
     name: 'httpd
 
-    spec: make system/standard/port-spec-head [port-id: actions: _]
+    spec: make system/standard/port-spec-head [port-id: actions: debug: _ ]
 
     wake-client: function [
         return: [port!]
@@ -109,6 +110,7 @@ sys/make-scheme [
     init: function [server [port!]] [
         spec: server/spec
 
+probe spec
         case [
             url? spec/ref []
             block? spec/actions []
